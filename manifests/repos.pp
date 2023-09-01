@@ -1,4 +1,6 @@
 class docker::repos {
+  include ::stdlib
+  include ::apt
   ensure_packages($docker::prerequired_packages)
 
   case $facts['os']['family'] {
