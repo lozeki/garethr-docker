@@ -1,9 +1,4 @@
-class docker::repos (
-  Optional[String]  $location         = $docker::package_location,
-  Optional[String]  $key_source       = $docker::package_key_source,
-  Optional[Boolean] $key_check_source = $docker::package_key_check_source,
-  String            $architecture     = $facts['os']['architecture'],
-) {
+class docker::repos {
   stdlib::ensure_packages($docker::prerequired_packages)
 
   case $facts['os']['family'] {
