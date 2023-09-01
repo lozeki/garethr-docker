@@ -5,7 +5,8 @@ class docker::repos {
 
   case $facts['os']['family'] {
     'Debian': {
-      $release       = $docker::release
+      $release       = $docker::package_release
+      $location      = $docker::package_source_location
       $package_key   = $docker::package_key
       $package_repos = $docker::package_repos
 
@@ -56,8 +57,8 @@ class docker::repos {
     }
     'RedHat': {
       if ($docker::manage_package) {
-        $baseurl      = $location
-        $gpgkey       = $key_source
+        $baseurl      = $docker::package_source_location
+        $gpgkey       = $docker::package_key_source
         $gpgkey_check = $key_check_source
 
         if ($docker::use_upstream_package_source) {
