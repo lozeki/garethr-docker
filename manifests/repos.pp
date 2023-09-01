@@ -1,5 +1,5 @@
 class docker::repos {
-  stdlib::ensure_packages($docker::prerequired_packages)
+  ensure_packages($docker::prerequired_packages)
 
   case $facts['os']['family'] {
     'Debian': {
